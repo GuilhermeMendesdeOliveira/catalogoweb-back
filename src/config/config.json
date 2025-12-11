@@ -1,6 +1,6 @@
 {
-  "use_env_variable": {
-    "DATABASE_URL": "DATABASE_URL",
+  "development": {
+    "use_env_variable": "DATABASE_URL",
     "dialect": "postgres",
     "define": {
       "timestamps": true,
@@ -19,8 +19,8 @@
       "updatedAt": "updated_at"
     }
   },
-  "use_env_variable": {
-    "DATABASE_URL": "DATABASE_URL",
+  "production": {
+    "use_env_variable": "DATABASE_URL",
     "dialect": "postgres",
     "define": {
       "timestamps": true,
