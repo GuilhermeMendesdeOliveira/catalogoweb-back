@@ -1,5 +1,5 @@
 {
-  "development": {
+  "use_env_variable": {
     "DATABASE_URL": "DATABASE_URL",
     "dialect": "postgres",
     "define": {
@@ -19,7 +19,7 @@
       "updatedAt": "updated_at"
     }
   },
-  "production": {
+  "use_env_variable": {
     "DATABASE_URL": "DATABASE_URL",
     "dialect": "postgres",
     "define": {
