@@ -26,7 +26,7 @@ let connection;
 if (isTestEnv === 'test') {
   connection = new Sequelize({dialect, storage, logging: console.log});
 } else {
-  connection = new Sequelize(process.env.DATABASE_URL, {
+  connection = new Sequelize(process.env.POSTGRES_URL, {
     dialect: 'postgres',
     logging: false,
   });
