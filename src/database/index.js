@@ -14,7 +14,7 @@ const config = JSON.parse(
   fs.readFileSync(new URL('../config/config.json', import.meta.url), 'utf-8')
 );
 
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV;
 const { dialect, storage } = config[env];
 
 const models = [categoria, produto, usuario];
