@@ -1,6 +1,6 @@
 {
   "development": {
-    "use_env_variable": "postgres://postgres:T2Fibwv6Zanm0fyssa4EeV80HVzPKDfeVkI5ZtLpZ6uDfLKVqQiTOpXBUCBDsJgT@okw4g00o0ksswsws0ggksw08:5432/camafeudb",
+    "use_env_variable": "DATABASE_URL",
     "dialect": "postgres",
     "define": {
       "timestamps": true,
@@ -20,7 +20,7 @@
     }
   },
   "production": {
-    "use_env_variable": "POSTGRES_URL",
+    "use_env_variable": "DATABASE_URL",
     "dialect": "postgres",
     "define": {
       "timestamps": true,
