@@ -1,0 +1,42 @@
+services:
+  api:
+    build: .
+    container_name: api_catalogocamafeu
+    ports:
+      - "54850:54850"
+    environment:
+      - DATABASE_URL=postgres://meuusuario:minhasenha@postgres:5432/catalogocamafeu
+      - NODE_ENV=development
+    depends_on:
+      - postgres
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+
+  postgres:
+    image: postgres:15
+    container_name: catalogocamafeu_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: meuusuario
+      POSTGRES_PASSWORD: minhasenha
+      POSTGRES_DB: catalogocamafeu
+    ports:
+      - "55432:5432" # ou outra acima de 55000
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:
