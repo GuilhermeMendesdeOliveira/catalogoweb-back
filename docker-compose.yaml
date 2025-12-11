@@ -5,7 +5,7 @@ services:
     ports:
       - "54850:54850"
     environment:
-      - DATABASE_URL=${POSTGRES_URL}
+      - DATABASE_URL=${DATABASE_URL}
       - NODE_ENV=development
     dns:
       - 8.8.8.8
