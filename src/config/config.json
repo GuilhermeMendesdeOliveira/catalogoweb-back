@@ -1,0 +1,33 @@
+{
+  "development": {
+    "dialect": "sqlite",
+    "storage": "./src/database/database.sqlite",
+    "define": {
+      "timestamps": true,
+      "underscored": true,
+      "createdAt": "created_at",
+      "updatedAt": "updated_at"
+    }
+  },
+  "test": {
+    "dialect": "sqlite",
+    "storage": "./src/database/database.sqlite",
+    "define": {
+      "timestamps": true,
+      "underscored": true,
+      "createdAt": "created_at",
+      "updatedAt": "updated_at"
+    }
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "dialect": "postgres",
+    "define": {
+      "timestamps": true,
+      "underscored": true,
+      "createdAt": "created_at",
+      "updatedAt": "updated_at"
+    },
+    "ssl": false
+  }
+}
