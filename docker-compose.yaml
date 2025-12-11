@@ -5,7 +5,7 @@ services:
     ports:
       - "54850:54850"
     environment:
-      - DATABASE_URL=postgres://meuusuario:minhasenha@postgres:5433/catalogocamafeu
+      - DATABASE_URL=postgres://meuusuario:minhasenha@postgres:5432/catalogocamafeu
       - NODE_ENV=development
     depends_on:
       - postgres
@@ -22,7 +22,7 @@ services:
       POSTGRES_PASSWORD: minhasenha
       POSTGRES_DB: catalogocamafeu
     ports:
-      - "55432:5432" # ou outra acima de 55000
+      - "55433:5432" # ou outra acima de 55000
     volumes:
       - pgdata:/var/lib/postgresql/data
 
