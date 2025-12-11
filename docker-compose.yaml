@@ -6,7 +6,7 @@ services:
       - "54850:54850"
     environment:
       - DATABASE_URL=${DATABASE_URL}
-      - NODE_ENV=development
+      - NODE_ENV=production
     dns:
       - 8.8.8.8
       - 1.1.1.1
