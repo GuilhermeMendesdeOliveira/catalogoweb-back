@@ -1,43 +1,48 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
-import path from 'path';
 import fs from 'fs';
 
-// Importação dos Models
 import categoria from '../models/categoriaModel.js';
 import produto from '../models/produtoModel.js';
 import usuario from '../models/usuarioModel.js';
 
-
-
 dotenv.config();
 
+// Carrega configurações do Sequelize CLI
 const config = JSON.parse(
-    fs.readFileSync(new URL('../config/config.json', import.meta.url), 'utf-8')
+  fs.readFileSync(new URL('../config/config.json', import.meta.url), 'utf-8')
 );
 
-const isTestEnv = process.env.NODE_ENV;
-const { dialect, storage } = config[isTestEnv];
-const models = [categoria, produto, usuario];
+// 🔥 Fallback seguro — caso NODE_ENV não exista, usar development
+const env = process.env.NODE_ENV || 'development';
 
-console.log('isTestEnv:', isTestEnv);
-console.log("🔗 Conectando ao banco de dados...");
+// Carrega configurações conforme o ambiente atual
+const { dialect, storage } = config[env];
+
+console.log('Ambiente:', env);
+console.log('DATABASE_URL:', process.env.DATABASE_URL);
+
 let connection;
-if (isTestEnv === 'test') {
-  connection = new Sequelize({dialect, storage, logging: console.log});
+
+// Ambiente de teste
+if (env === 'test') {
+  connection = new Sequelize({
+    dialect,
+    storage,
+    logging: false,
+  });
 } else {
+  // Produção / Desenvolvimento (usando DATABASE_URL)
   connection = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     logging: false,
   });
 }
 
+// Carrega models
+const models = [categoria, produto, usuario];
 
-models.forEach((model) => model.init(connection));
-models.forEach(
-  (model) => model.associate && model.associate(connection.models)
-);
-
-// connection.sync();
+models.forEach(model => model.init(connection));
+models.forEach(model => model.associate && model.associate(connection.models));
 
 export default connection;
