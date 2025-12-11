@@ -1,6 +1,6 @@
 {
   "development": {
-    "use_env_variable": "DATABASE_URL",
+    "DATABASE_URL": "DATABASE_URL",
     "dialect": "postgres",
     "define": {
       "timestamps": true,
@@ -20,7 +20,7 @@
     }
   },
   "production": {
-    "use_env_variable": "DATABASE_URL",
+    "DATABASE_URL": "DATABASE_URL",
     "dialect": "postgres",
     "define": {
       "timestamps": true,
