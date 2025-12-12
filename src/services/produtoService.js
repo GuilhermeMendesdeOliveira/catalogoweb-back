@@ -78,14 +78,24 @@ class ProdutoService {
             // Método para validar se há dados
             this.validateData(data);
 
+            let url_foto = null;
+            if(file){
+                url_foto = `/uploads/${file.filename}`;
+            }
+
             // Método para buscar produto por ID
             const produto = await this.produtoRepository.findById(id);
             if(!produto){
                 throw new Error('Produto não encontrado!');
             }
 
+            const produtoComUrl = {
+                ...data,
+                url_foto
+            }
+
             // Método para atualizar o produto
-            const produtoAtualizado = await this.produtoRepository.update(id, data);
+            const produtoAtualizado = await this.produtoRepository.update(id, produtoComUrl);
             return produtoAtualizado;
         }
         catch(error){
