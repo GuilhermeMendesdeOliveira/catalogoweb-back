@@ -73,7 +73,7 @@ class ProdutoService {
         }
     }
 
-    async update(id, data){
+    async update(id, data, file){
         try {
             // Método para validar se há dados
             this.validateData(data);
