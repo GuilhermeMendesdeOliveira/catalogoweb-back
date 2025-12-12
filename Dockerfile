@@ -3,6 +3,8 @@ FROM node:18
 # Diretório de trabalho correto
 WORKDIR /app
 
+RUN npm install -g sequelize-cli
+
 # Copia apenas arquivos de dependências primeiro (melhora cache)
 COPY package*.json ./
 
