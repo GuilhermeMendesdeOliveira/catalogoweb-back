@@ -80,7 +80,9 @@ class ProdutoController {
         try {
             const { id } = req.params;
             const data = req.body;
-            const produtoAtualizado = await this.produtoService.update(id, data);
+            const file = req.file
+            
+            const produtoAtualizado = await this.produtoService.update(id, data, file);
             res.status(200).json({
                 message: 'Produto atualizado com sucesso!',
                 data: produtoAtualizado
