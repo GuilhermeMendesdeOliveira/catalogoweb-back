@@ -25,7 +25,7 @@ router.get('/findAllByCategoria/:categoria', (req, res) => {
         
 router.post('/create', upload, (req, res) => produtoController.create(req, res) )
 
-router.put('/update/:id', (req, res) => {
+router.put('/update/:id', upload, (req, res) => {
     produtoController.update(req, res);
 })
 
